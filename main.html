@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guess the Number</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+<h1>Guess the Number Game</h1>
+<p>Guess a number between 1 and 100:</p>
+<input type="number" id="guess" min="1" max="100">
+<button onclick="checkGuess()">Submit Guess</button>
+<p id="result"></p>
+
+<script>
+    let secretNumber = Math.floor(Math.random() * 100) + 1;
+    let attempts = 0;
+
+    function checkGuess() {
+        let guessedNumber = document.getElementById('guess').value;
+        attempts++;
+
+        if (guessedNumber == secretNumber) {
+            document.getElementById('result').innerHTML = `Congratulations! You guessed the number in ${attempts} attempts.`;
+        } else if (guessedNumber < secretNumber) {
+            document.getElementById('result').innerHTML = 'Try a higher number.';
+        } else {
+            document.getElementById('result').innerHTML = 'Try a lower number.';
+        }
+    }
+</script>
+</body>
+</html>
